@@ -2,8 +2,8 @@ from . import models
 
 from .connection import db_session
 
-from sqlalchemy import select
-from sqlalchemy.orm import selectinload, joinedload
+from sqlalchemy import select, desc
+from sqlalchemy.orm import selectinload
 
 
 class BaseCruds:
@@ -94,7 +94,7 @@ class WeatherCruds:
             ).limit(
                 limit_row
             ).order_by(
-                models.WeatherHistory.date
+                desc(models.WeatherHistory.date)
             )
 
             result = await session.execute(query)

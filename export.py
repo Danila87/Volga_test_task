@@ -39,7 +39,7 @@ class ExcelExport(Export):
             for row in self.data
 
         ]
-
+        dataframe = sorted(dataframe, key=lambda key: key['Дата'])
         try:
 
             df = pandas.DataFrame(dataframe)
