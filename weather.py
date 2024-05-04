@@ -22,10 +22,9 @@ class Weather:
                                                               data=self.weather_params)
 
         wind_direction = self.analyze_wind_direction(wind_direction=response_data['current']['wind_direction_10m'])
-        date = datetime.utcfromtimestamp(response_data['current']['time'])
 
         weather_data = {
-            'date': date,
+            'date': datetime.now(),
             'temperature': int(response_data['current']['temperature_2m']),
             'wind_direction': wind_direction,
             'wind_speed': int(response_data['current']['wind_speed_10m']),
